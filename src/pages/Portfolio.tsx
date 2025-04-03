@@ -1,19 +1,19 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
+import Portfolio from '@/components/Portfolio';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+const PortfolioPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main>
-        <Hero />
+      <main className="pt-20">
+        <Portfolio />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default PortfolioPage;
