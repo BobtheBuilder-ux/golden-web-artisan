@@ -1,6 +1,9 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { TextRotate } from '@/components/ui/text-rotate';
+import { Button } from '@/components/ui/button';
 
 const Hero: React.FC = () => {
   const handleScrollToAbout = () => {
@@ -16,23 +19,56 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-right">
-            Creative <span className="text-gold">Web Designer</span> & Developer
-          </h1>
+          <motion.h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Creative <TextRotate 
+              texts={[
+                "Web Designer",
+                "UI/UX Designer", 
+                "Front-end Developer",
+                "WordPress Expert"
+              ]} 
+              mainClassName="text-gold inline-flex"
+              rotationInterval={3000}
+              staggerDuration={0.03}
+              staggerFrom="first"
+            /> & Developer
+          </motion.h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-black/80 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <motion.p 
+            className="text-xl md:text-2xl mb-8 text-black/80"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             Transforming ideas into exceptional digital experiences with creative design and cutting-edge technology.
-          </p>
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <button className="button" onClick={handleScrollToAbout}>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <Button 
+              variant="default" 
+              className="bg-gold hover:bg-gold/90 text-black" 
+              onClick={handleScrollToAbout}
+            >
               Explore My Work
-            </button>
+            </Button>
             
-            <button className="px-6 py-3 border-2 border-black text-black font-semibold rounded-md hover:bg-black hover:text-white transition-all duration-300 flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              className="border-2 border-black text-black hover:bg-black hover:text-white"
+            >
               Contact Me <ArrowRight size={18} />
-            </button>
-          </div>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>
