@@ -1,0 +1,17 @@
+
+{
+    "name": "golden-web-artisan",
+    "description": "A modern web application",
+    "type": "project",
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {},
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

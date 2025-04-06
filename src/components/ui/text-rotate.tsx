@@ -76,9 +76,20 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
 
     // handy function to split text into characters with support for unicode and emojis
     const splitIntoCharacters = (text: string): string[] => {
-      if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
-        const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" })
-        return Array.from(segmenter.segment(text), ({ segment }) => segment)
+      // Check if Intl.Segmenter exists using type checking to avoid TypeScript errors
+      if (typeof Intl !== "undefined" && 
+          'Segmenter' in Intl && 
+          // @ts-ignore - Intl.Segmenter might not be recognized by TypeScript
+          typeof Intl.Segmenter === 'function') {
+        try {
+          // @ts-ignore - Using Segmenter even if TypeScript doesn't recognize it
+          const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" })
+          // @ts-ignore
+          return Array.from(segmenter.segment(text), ({ segment }) => segment)
+        } catch (error) {
+          // Fallback if there's an error using Segmenter
+          return Array.from(text)
+        }
       }
       // Fallback for browsers that don't support Intl.Segmenter
       return Array.from(text)
