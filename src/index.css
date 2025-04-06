@@ -75,6 +75,18 @@
   .card {
     @apply bg-white shadow-md rounded-lg overflow-hidden border border-gray-100;
   }
+  
+  /* Loading dots animation */
+  .loading-dots {
+    display: inline-block;
+    animation: loadingDots 1.5s infinite;
+  }
+  
+  @keyframes loadingDots {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }
 }
 
 @layer utilities {
