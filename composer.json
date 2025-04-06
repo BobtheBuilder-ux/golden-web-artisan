@@ -1,6 +1,6 @@
 
 {
-    "name": "golden-web-artisan",
+    "name": "golden/web-artisan",
     "description": "A modern web application",
     "type": "project",
     "require": {
