@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: '/', // Explicitly set base path
+  base: '/', // Explicitly set base path for production
   plugins: [
     react(),
     mode === 'development' &&
@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => ({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: false, // Keep console logs for debugging deployment issues
       },
     },
   },
